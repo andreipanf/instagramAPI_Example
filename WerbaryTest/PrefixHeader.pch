@@ -1,0 +1,19 @@
+//
+//  PrefixHeader.pch
+//  WerbaryTest
+//
+//  Created by Andrey on 19.08.15.
+//  Copyright (c) 2015 Andrey. All rights reserved.
+//
+
+#ifndef WerbaryTest_PrefixHeader_pch
+#define WerbaryTest_PrefixHeader_pch
+
+#define KAUTHURL @"https://api.instagram.com/oauth/authorize/"
+#define kAPIURl @"https://api.instagram.com/v1/users/"
+#define KCLIENTID @"efda52f822c54906b981ff3a281d6b7d"
+#define KCLIENTSERCRET @"2d408ed8446d4da0b400553e8dd903d3"
+#define kREDIRECTURI @"http://andreipanf.me"
+#define KACCESS_TOKEN @"access_token"
+
+#endif

@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UIWebViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *photoView;
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *likesLabel;
+@property (weak, nonatomic) IBOutlet UIButton *leftButton;
+@property (weak, nonatomic) IBOutlet UIButton *rightButton;
+
+
+- (IBAction)leftButtonPressed:(id)sender;
+- (IBAction)rightButtonPressed:(id)sender;
 
 @end
 
