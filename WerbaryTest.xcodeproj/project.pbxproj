@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		747111071B851DA30047C174 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 747111021B851DA30047C174 /* SVIndefiniteAnimatedView.m */; };
+		747111081B851DA30047C174 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 747111041B851DA30047C174 /* SVProgressHUD.bundle */; };
+		747111091B851DA30047C174 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 747111061B851DA30047C174 /* SVProgressHUD.m */; };
 		74D47C181B84FF780067390D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D47C171B84FF780067390D /* main.m */; };
 		74D47C1B1B84FF780067390D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D47C1A1B84FF780067390D /* AppDelegate.m */; };
 		74D47C1E1B84FF780067390D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D47C1D1B84FF780067390D /* ViewController.m */; };
@@ -28,6 +31,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		747111011B851DA30047C174 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = WerbaryTest/Class/SVProgress/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		747111021B851DA30047C174 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = WerbaryTest/Class/SVProgress/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		747111031B851DA30047C174 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVProgressHUD-Prefix.pch"; path = "WerbaryTest/Class/SVProgress/SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		747111041B851DA30047C174 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = WerbaryTest/Class/SVProgress/SVProgressHUD.bundle; sourceTree = "<group>"; };
+		747111051B851DA30047C174 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = WerbaryTest/Class/SVProgress/SVProgressHUD.h; sourceTree = "<group>"; };
+		747111061B851DA30047C174 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = WerbaryTest/Class/SVProgress/SVProgressHUD.m; sourceTree = "<group>"; };
 		74D47C121B84FF780067390D /* WerbaryTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WerbaryTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D47C161B84FF780067390D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74D47C171B84FF780067390D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -64,11 +73,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7471110A1B851DBB0047C174 /* SVProgress */ = {
+			isa = PBXGroup;
+			children = (
+				747111011B851DA30047C174 /* SVIndefiniteAnimatedView.h */,
+				747111021B851DA30047C174 /* SVIndefiniteAnimatedView.m */,
+				747111031B851DA30047C174 /* SVProgressHUD-Prefix.pch */,
+				747111041B851DA30047C174 /* SVProgressHUD.bundle */,
+				747111051B851DA30047C174 /* SVProgressHUD.h */,
+				747111061B851DA30047C174 /* SVProgressHUD.m */,
+			);
+			name = SVProgress;
+			sourceTree = "<group>";
+		};
 		74D47C091B84FF780067390D = {
 			isa = PBXGroup;
 			children = (
 				74D47C3F1B85006F0067390D /* Model */,
 				74D47C141B84FF780067390D /* WerbaryTest */,
+				7471110A1B851DBB0047C174 /* SVProgress */,
 				74D47C2E1B84FF780067390D /* WerbaryTestTests */,
 				74D47C131B84FF780067390D /* Products */,
 			);
@@ -215,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				747111081B851DA30047C174 /* SVProgressHUD.bundle in Resources */,
 				74D47C211B84FF780067390D /* Main.storyboard in Resources */,
 				74D47C261B84FF780067390D /* LaunchScreen.xib in Resources */,
 				74D47C231B84FF780067390D /* Images.xcassets in Resources */,
@@ -235,10 +259,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				747111071B851DA30047C174 /* SVIndefiniteAnimatedView.m in Sources */,
 				74D47C3E1B8500670067390D /* Photo.m in Sources */,
 				74D47C1E1B84FF780067390D /* ViewController.m in Sources */,
 				74D47C1B1B84FF780067390D /* AppDelegate.m in Sources */,
 				74D47C181B84FF780067390D /* main.m in Sources */,
+				747111091B851DA30047C174 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +463,7 @@
 				74D47C371B84FF780067390D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		74D47C381B84FF780067390D /* Build configuration list for PBXNativeTarget "WerbaryTestTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +472,7 @@
 				74D47C3A1B84FF780067390D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -5,6 +5,8 @@
 //  Created by Andrey on 19.08.15.
 //  Copyright (c) 2015 Andrey. All rights reserved.
 //
+#import "SVProgressHUD.h"
+@import QuartzCore;
 
 #ifndef WerbaryTest_PrefixHeader_pch
 #define WerbaryTest_PrefixHeader_pch

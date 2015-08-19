@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController <UIWebViewDelegate>
 
+
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
@@ -19,6 +20,8 @@
 
 - (IBAction)leftButtonPressed:(id)sender;
 - (IBAction)rightButtonPressed:(id)sender;
+
+- (IBAction)loadButtonPressed:(id)sender;
 
 @end
 

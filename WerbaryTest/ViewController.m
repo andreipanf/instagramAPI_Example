@@ -8,67 +8,121 @@
 
 #import "ViewController.h"
 #import "Photo.h"
-
+#import "SVProgressHUD.h"
 
 @interface ViewController ()
 {
     UIWebView *acessWebView;
+    NSArray *sortedPhoto;
+    int indexPhoto;
 }
 
 @end
 
 @implementation ViewController
-@synthesize photoView;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
-    
-    
-   //
 }
-
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
+    self.leftButton.enabled = NO;
+    self.rightButton.enabled = NO;
+    
     //получение access_token
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *accesToken = [userDefaults objectForKey:@"ACCESS_TOKEN"];
     if (accesToken == nil) {
         [self getAcessToken];
     }
-    NSString *path = [NSString stringWithFormat:@"https://api.instagram.com//v1/users/self/media/recent?access_token=%@",accesToken];
     
+}
+
+
+-(void)getAcessToken
+{
+    acessWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    NSString *fullURL = [NSString stringWithFormat:@"%@?client_id=%@&redirect_uri=%@&response_type=token",KAUTHURL, KCLIENTID,kREDIRECTURI];
+    NSURL *url = [NSURL URLWithString:fullURL];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    [acessWebView loadRequest:requestObj];
+    acessWebView.delegate = self;
+    [self.view addSubview:acessWebView];
+}
+
+
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
+    NSString* urlString = [[request URL] absoluteString];
+    NSArray *UrlParts = [urlString componentsSeparatedByString:[NSString stringWithFormat:@"%@/", kREDIRECTURI]];
+    if ([UrlParts count] > 1) {
+        
+        urlString = [UrlParts objectAtIndex:1];
+        NSRange accessToken = [urlString rangeOfString: @"#access_token="];
+        if (accessToken.location != NSNotFound) {
+            NSString* strAccessToken = [urlString substringFromIndex: NSMaxRange(accessToken)];
+            
+            [[NSUserDefaults standardUserDefaults] setValue:strAccessToken forKey:@"ACCESS_TOKEN"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            //NSLog(@"AccessToken = %@ ", strAccessToken);
+            [acessWebView removeFromSuperview];
+            //[self loadRequestForMediaData];
+            //[self getJSON];
+        }
+        return NO;
+    }
+    return YES;
+}
+
+- (IBAction)leftButtonPressed:(id)sender {
+    self.rightButton.enabled = YES;
+    indexPhoto--;
+    
+    if (indexPhoto == 0) {
+        self.leftButton.enabled = NO;
+    }
+    [self loadPhoto];
+    
+}
+
+- (IBAction)rightButtonPressed:(id)sender
+{
+    self.leftButton.enabled = YES;
+    
+    indexPhoto++;
+    
+    if (indexPhoto == sortedPhoto.count-1) {
+        self.rightButton.enabled = NO;
+    }
+    [self loadPhoto];
+    
+}
+
+- (IBAction)loadButtonPressed:(id)sender
+{
+    [sender setUserInteractionEnabled:NO];
+    [sender setHidden:YES];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *accesToken = [userDefaults objectForKey:@"ACCESS_TOKEN"];
+    
+    NSString *path = [NSString stringWithFormat:@"%@self/media/recent?access_token=%@",kAPIURl, accesToken];
+    
+    [SVProgressHUD showWithStatus:@"Загрузка фото"];
     //Получаем все фото пользователя
     [self fetchAllUserMediaRecentFromURL:[NSURL URLWithString:path] success:^(NSArray *allPhoto){
         
         [self sortedAndLoadPhotoWith:allPhoto];
-        
+        [SVProgressHUD dismiss];
+        if (indexPhoto == 0) {
+            self.leftButton.enabled = NO;
+            self.rightButton.enabled = YES;
+        }
+        [sender setUserInteractionEnabled:YES];
+        [sender setHidden:NO];
     }];
 }
-
--(void)sortedAndLoadPhotoWith:(NSArray*)allPhoto
-{
-    //Сортируем их по коментам и лайкам
-    NSSortDescriptor *comentSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"countComment"
-                                                                         ascending:NO];
-    NSSortDescriptor *likesSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"likes"
-                                                                        ascending:NO];
-    NSArray *sortDescriptors = [NSArray arrayWithObjects:comentSortDescriptor,likesSortDescriptor,nil];
-    NSArray *sortedPhoto = [allPhoto sortedArrayUsingDescriptors:sortDescriptors];
-    
-    Photo *firstPhoto = [sortedPhoto firstObject];
-    self.commentLabel.text = [NSString stringWithFormat:@"Comment:%i",firstPhoto.countComment];
-    self.likesLabel.text = [NSString stringWithFormat:@"Likes:%i",firstPhoto.likes];
-    //[self.photoView removeFromSuperview];
-    
-    //photoView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:firstPhoto.urlPhoto]]];
-    photoView.image = [UIImage imageWithData:firstPhoto.image];
-    //[self.view addSubview:self.photoView];
-    
-}
-
 
 - (void)fetchAllUserMediaRecentFromURL:(NSURL *)url success:(void(^)(NSArray *posts))success {
     
@@ -99,8 +153,8 @@
                     int likeCount = [[likes objectForKey:@"count"]intValue];
                     
                     Photo *photo = [[Photo alloc]init];
-                    //photo.urlPhoto = urlImage;
-                    photo.image = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlImage]];
+                    photo.urlPhoto = urlImage;
+                    //photo.image = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlImage]];
                     photo.countComment = comentsCount;
                     photo.likes = likeCount;
                     
@@ -140,40 +194,31 @@
     return paginationUrl;
 }
 
-
--(void)getAcessToken
+-(void)sortedAndLoadPhotoWith:(NSArray*)allPhoto
 {
-    acessWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    NSString *fullURL = [NSString stringWithFormat:@"%@?client_id=%@&redirect_uri=%@&response_type=token",KAUTHURL, KCLIENTID,kREDIRECTURI];
-    NSURL *url = [NSURL URLWithString:fullURL];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [acessWebView loadRequest:requestObj];
-    acessWebView.delegate = self;
-    [self.view addSubview:acessWebView];
+    //Сортируем их по коментам и лайкам
+    NSSortDescriptor *comentSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"countComment"
+                                                                         ascending:NO];
+    NSSortDescriptor *likesSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"likes"
+                                                                        ascending:NO];
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:comentSortDescriptor,likesSortDescriptor,nil];
+    sortedPhoto = [allPhoto sortedArrayUsingDescriptors:sortDescriptors];
+    
+    if (sortedPhoto.count > 0) {
+        Photo *firstPhoto = [sortedPhoto firstObject];
+        indexPhoto = (int)[sortedPhoto indexOfObject:firstPhoto];
+        [self loadPhoto];
+        
+    }
+    
 }
 
-
--(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    
-    NSString* urlString = [[request URL] absoluteString];
-    NSArray *UrlParts = [urlString componentsSeparatedByString:[NSString stringWithFormat:@"%@/", kREDIRECTURI]];
-    if ([UrlParts count] > 1) {
-        
-        urlString = [UrlParts objectAtIndex:1];
-        NSRange accessToken = [urlString rangeOfString: @"#access_token="];
-        if (accessToken.location != NSNotFound) {
-            NSString* strAccessToken = [urlString substringFromIndex: NSMaxRange(accessToken)];
-            
-            [[NSUserDefaults standardUserDefaults] setValue:strAccessToken forKey:@"ACCESS_TOKEN"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            //NSLog(@"AccessToken = %@ ", strAccessToken);
-            [acessWebView removeFromSuperview];
-            //[self loadRequestForMediaData];
-            //[self getJSON];
-        }
-        return NO;
-    }
-    return YES;
+-(void)loadPhoto
+{
+    Photo *photo = [sortedPhoto objectAtIndex:indexPhoto];
+    self.commentLabel.text = [NSString stringWithFormat:@"Comment:%i",photo.countComment];
+    self.likesLabel.text = [NSString stringWithFormat:@"Likes:%i",photo.likes];
+    self.photoView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.urlPhoto]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -181,9 +226,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)leftButtonPressed:(id)sender {
-}
 
-- (IBAction)rightButtonPressed:(id)sender {
-}
 @end
