@@ -10,4 +10,8 @@
 
 @interface InstagramRequests : NSObject
 
++(InstagramRequests*) network;
+
+- (void)fetchAllUserMediaRecentFromURL:(NSURL *)url success:(void(^)(NSArray *posts))success;
+
 @end
