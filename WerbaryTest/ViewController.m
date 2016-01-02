@@ -9,8 +9,9 @@
 #import "ViewController.h"
 #import "Photo.h"
 #import "SVProgressHUD.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
-@interface ViewController ()
+@interface ViewController () <UIWebViewDelegate>
 {
     UIWebView *acessWebView;
     NSArray *sortedPhoto;
@@ -109,7 +110,7 @@
     
     NSString *path = [NSString stringWithFormat:@"%@self/media/recent?access_token=%@",kAPIURl, accesToken];
     
-    [SVProgressHUD showWithStatus:@"Загрузка фото"];
+    [SVProgressHUD showWithStatus:@"Load and Sort photo"];
     //Получаем все фото пользователя
     [self fetchAllUserMediaRecentFromURL:[NSURL URLWithString:path] success:^(NSArray *allPhoto){
         
@@ -218,7 +219,7 @@
     Photo *photo = [sortedPhoto objectAtIndex:indexPhoto];
     self.commentLabel.text = [NSString stringWithFormat:@"Comment:%i",photo.countComment];
     self.likesLabel.text = [NSString stringWithFormat:@"Likes:%i",photo.likes];
-    self.photoView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.urlPhoto]]];
+    [self.photoView sd_setImageWithURL:[NSURL URLWithString:photo.urlPhoto]];
 }
 
 - (void)didReceiveMemoryWarning {

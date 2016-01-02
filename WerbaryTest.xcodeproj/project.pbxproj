@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16AD74ADE3CE6332F0E7D68D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 870F2AABD726D6510D379D2A /* libPods.a */; };
 		747111071B851DA30047C174 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 747111021B851DA30047C174 /* SVIndefiniteAnimatedView.m */; };
 		747111081B851DA30047C174 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 747111041B851DA30047C174 /* SVProgressHUD.bundle */; };
 		747111091B851DA30047C174 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 747111061B851DA30047C174 /* SVProgressHUD.m */; };
@@ -18,6 +19,7 @@
 		74D47C261B84FF780067390D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74D47C241B84FF780067390D /* LaunchScreen.xib */; };
 		74D47C321B84FF780067390D /* WerbaryTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D47C311B84FF780067390D /* WerbaryTestTests.m */; };
 		74D47C3E1B8500670067390D /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D47C3D1B8500670067390D /* Photo.m */; };
+		74E62A781C37CB2F005CB4D5 /* InstagramRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E62A771C37CB2F005CB4D5 /* InstagramRequests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		60DB73A0D48E92ECCD9C9097 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		747111011B851DA30047C174 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = WerbaryTest/Class/SVProgress/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		747111021B851DA30047C174 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = WerbaryTest/Class/SVProgress/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		747111031B851DA30047C174 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVProgressHUD-Prefix.pch"; path = "WerbaryTest/Class/SVProgress/SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -53,6 +56,10 @@
 		74D47C3B1B84FFBA0067390D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		74D47C3C1B8500670067390D /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = Class/Photo.h; sourceTree = "<group>"; };
 		74D47C3D1B8500670067390D /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = Class/Photo.m; sourceTree = "<group>"; };
+		74E62A761C37CB2F005CB4D5 /* InstagramRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstagramRequests.h; path = Network/InstagramRequests.h; sourceTree = "<group>"; };
+		74E62A771C37CB2F005CB4D5 /* InstagramRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstagramRequests.m; path = Network/InstagramRequests.m; sourceTree = "<group>"; };
+		870F2AABD726D6510D379D2A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B48BC1F13DC18F0894B2361B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16AD74ADE3CE6332F0E7D68D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40761A0A54DDAC08A1687586 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				870F2AABD726D6510D379D2A /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7471110A1B851DBB0047C174 /* SVProgress */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,11 +105,14 @@
 		74D47C091B84FF780067390D = {
 			isa = PBXGroup;
 			children = (
+				74E62A791C37CB39005CB4D5 /* Network */,
 				74D47C3F1B85006F0067390D /* Model */,
 				74D47C141B84FF780067390D /* WerbaryTest */,
 				7471110A1B851DBB0047C174 /* SVProgress */,
 				74D47C2E1B84FF780067390D /* WerbaryTestTests */,
 				74D47C131B84FF780067390D /* Products */,
+				B46847BA19A126CE01965C36 /* Pods */,
+				40761A0A54DDAC08A1687586 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,6 +177,25 @@
 			path = WerbaryTest;
 			sourceTree = "<group>";
 		};
+		74E62A791C37CB39005CB4D5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				74E62A761C37CB2F005CB4D5 /* InstagramRequests.h */,
+				74E62A771C37CB2F005CB4D5 /* InstagramRequests.m */,
+			);
+			name = Network;
+			path = WerbaryTest;
+			sourceTree = "<group>";
+		};
+		B46847BA19A126CE01965C36 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				60DB73A0D48E92ECCD9C9097 /* Pods.debug.xcconfig */,
+				B48BC1F13DC18F0894B2361B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,9 +203,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74D47C351B84FF780067390D /* Build configuration list for PBXNativeTarget "WerbaryTest" */;
 			buildPhases = (
+				95FD78E4F114574C7F4191D8 /* Check Pods Manifest.lock */,
 				74D47C0E1B84FF780067390D /* Sources */,
 				74D47C0F1B84FF780067390D /* Frameworks */,
 				74D47C101B84FF780067390D /* Resources */,
+				BE620B7F66291120ABCBAEC7 /* Embed Pods Frameworks */,
+				7F41D3B5CFF4517E884DA53C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -202,7 +243,7 @@
 		74D47C0A1B84FF780067390D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Andrey;
 				TargetAttributes = {
 					74D47C111B84FF780067390D = {
@@ -254,12 +295,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7F41D3B5CFF4517E884DA53C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95FD78E4F114574C7F4191D8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BE620B7F66291120ABCBAEC7 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		74D47C0E1B84FF780067390D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				747111071B851DA30047C174 /* SVIndefiniteAnimatedView.m in Sources */,
+				74E62A781C37CB2F005CB4D5 /* InstagramRequests.m in Sources */,
 				74D47C3E1B8500670067390D /* Photo.m in Sources */,
 				74D47C1E1B84FF780067390D /* ViewController.m in Sources */,
 				74D47C1B1B84FF780067390D /* AppDelegate.m in Sources */,
@@ -327,6 +417,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -388,24 +479,28 @@
 		};
 		74D47C361B84FF780067390D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60DB73A0D48E92ECCD9C9097 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/WerbaryTest/PrefixHeader.pch";
 				INFOPLIST_FILE = WerbaryTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ap.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		74D47C371B84FF780067390D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B48BC1F13DC18F0894B2361B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/WerbaryTest/PrefixHeader.pch";
 				INFOPLIST_FILE = WerbaryTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ap.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -424,6 +519,7 @@
 				);
 				INFOPLIST_FILE = WerbaryTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ap.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WerbaryTest.app/WerbaryTest";
 			};
@@ -439,6 +535,7 @@
 				);
 				INFOPLIST_FILE = WerbaryTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ap.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WerbaryTest.app/WerbaryTest";
 			};
